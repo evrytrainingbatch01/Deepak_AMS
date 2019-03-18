@@ -1,0 +1,1 @@
+amazing-time-picker needs to be added under node_modules

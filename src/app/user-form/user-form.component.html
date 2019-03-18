@@ -1,0 +1,148 @@
+
+<html>
+
+<body>
+
+  <div class="jumbotron text-right" style="margin-bottom:0 ; padding-right: 10px">
+       <h3><b>Attendance Management System</b></h3>
+       <h4><b>A EVRY product</b></h4>
+  </div>
+  <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">AMS Dashboard</a>
+        </div>
+        
+      </div>
+    </nav>
+
+    <h5 style="text-align: end; padding-right: 50px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" > <b>Date :</b> {{myDate}} &nbsp; <b>Time :</b> {{myTime}}</h5>
+
+  <div class="col-sm-4"> 
+      <br/>
+      <br/>
+      
+      <h2>About <b>AMS</b></h2>
+      <hr class="d-sm-none">
+      <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">AMS is a software which makes AMS admin to keep track of the attendance and the time of login and logout.</p>
+ 
+      
+      <hr class="d-sm-none">
+      <div>
+        <h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Choose your option</h4>
+        <button class="btn btn-primary" style="width: 300px" (click)="onShowUserEntryDetail()">Add User Entry Detail</button>
+        <p></p>
+        <button class="btn btn-primary" style="width: 300px" (click)="onShowUserList()">Show User List</button>
+      </div>
+
+      <br/>
+      <br/>
+      
+      <hr class="d-sm-none">
+  </div>
+
+
+
+<div class="col-sm-8" *ngIf="toggleView1">
+    <br/>
+    <br/>
+    <br/>
+    <!-- <h2>Add User</h2> -->
+    <hr class="d-sm-none">
+    
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+
+        <div class="col-xs-4">
+          <label for="username" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Enter Username</label>
+        </div>
+      
+        <div class="col-xs-6">
+          <input  type="name" class="form-control" name="username" ngModel required #first="ngModel">
+        </div>
+
+        <div class="col-xs-4">&nbsp;</div>
+        <div class="col-xs-6">&nbsp;</div>
+
+        <div class="col-xs-4">
+          <label for="password" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Enter Password</label>
+        </div>
+      
+        <div class="col-xs-6">
+          <input type="password" class="form-control" name="password" ngModel>
+        </div>
+
+        <div class="col-xs-4">&nbsp;</div>
+        <div class="col-xs-6">&nbsp;</div>
+
+        <div class="col-xs-4">
+          <label for="entryTime" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Login Time</label>
+        </div>
+      
+        <div class="col-xs-6">
+          <input type="time" class="form-control" atp-time-picker value="20:55" name="entryTime" ngModel>
+        </div>
+      
+        <div class="col-xs-4">&nbsp;</div>
+        <div class="col-xs-6">&nbsp;</div>
+
+        <div class="col-xs-4">
+          <label for="exitTime" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Logout Time</label>
+        </div>
+      
+        <div class="col-xs-6">
+          <input type="time" class="form-control" atp-time-picker value="20:55" name="exitTime" ngModel>
+        </div>
+        
+        <div class="col-xs-4">&nbsp;</div>
+        <div class="col-xs-6">&nbsp;</div>
+        
+        
+       <button class="btn btn-success" style="width: 200px">Submit</button>
+        
+      </form>
+
+      <hr class="d-sm-none">
+</div>
+
+<!--sdsd-->
+<div class="col-sm-8" *ngIf="!toggleView1">
+    <h2>User List</h2>
+    <div class="w3-padding w3-white notranslate">
+      <div class="table-responsive">
+            <table class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th style="text-align: center">Username</th>
+              <th style="text-align: center">Password</th>
+              <th style="text-align: center">Login Time</th>
+              <th style="text-align: center">Logout Time</th>
+              <th style="text-align: center">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let v of values;  let i = index" >
+                    <td style="text-align: center">{{v[0]}}</td>
+                    <td style="text-align: center">{{v[1]}}</td>
+                    <td style="text-align: center">{{v[2]}}</td>
+                    <td style="text-align: center">{{v[3]}}</td>
+                    <td><button type="submit" (click)="onRemove(v,i)" class="btn btn-danger">Remove</button></td>
+                </tr>
+                
+            </tbody>
+            </table>
+      </div>
+    </div>
+   
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
